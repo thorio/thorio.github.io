@@ -7,6 +7,10 @@ status() {
 	printf "\n###\n### $*\n###\n\n"
 }
 
+role() {
+	ansible-playbook --connection=local --inventory 127.0.0.1, --limit 127.0.0.1 ~/.config/ansible/playbooks/$1.yml -K
+}
+
 # generate ssh keys
 if [ ! -f ~/.ssh/id_rsa ]; then
 	status generating ssh keys...
@@ -20,7 +24,7 @@ printf "\nadd deploy key now\n"
 read -n 1 -rsp $'press any key to continue...\n'
 
 # install dependencies
-status installing ansible, git
+status installing requisite packages
 sudo apt-get install ansible git -y
 
 # clone dotfiles repo
@@ -30,7 +34,8 @@ if [ ! -d "~/.dotfiles.git" ]; then
 	git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME checkout
 fi
 
-# run ansible playbook
-ansible-playbook --connection=local --inventory 127.0.0.1, --limit 127.0.0.1 ~/.config/ansible/playbooks/default.yml
+# assign roles
+role personal-repo
+role shell
 
 exec zsh
