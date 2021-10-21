@@ -13,11 +13,11 @@ role() {
 
 # generate ssh keys
 if [ ! -f ~/.ssh/id_rsa ]; then
-	status generating ssh keys...
+	status generating ssh keys
 	ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
 fi
 
-# add deploy key
+# prompt to add deploy key
 status printing public key
 cat ~/.ssh/id_rsa.pub
 printf "\nadd deploy key now\n"
@@ -29,12 +29,13 @@ sudo apt-get install ansible git -y
 
 # clone dotfiles repo
 if [ ! -d "~/.dotfiles.git" ]; then
-	status cloning dotfiles repo...
+	status cloning dotfiles repo
 	git clone --bare $DOTFILES_REPO $HOME/.dotfiles.git
 	git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME checkout
 fi
 
-# assign roles
+# assign roles via ansible playbooks
+status assigning roles
 role personal-repo
 role shell
 

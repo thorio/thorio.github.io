@@ -1,1 +1,3 @@
-This currently just contains a setup script.
+# thorio.github.io
+
+See: https://thorio.github.io/
