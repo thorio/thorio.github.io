@@ -43,6 +43,7 @@ code {
 # thorio.github.io
 
 This currently only contains a setup script for personal use.
+
 The dotfiles repo is unfortunately private because it contains personal information, so this script won't work for you.
 
 * * *
