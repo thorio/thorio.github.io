@@ -7,10 +7,6 @@ status() {
 	printf "\n###\n### $*\n###\n\n"
 }
 
-role() {
-	ansible-playbook --connection=local --inventory 127.0.0.1, --limit 127.0.0.1 ~/.config/ansible/playbooks/$1.yml -K
-}
-
 # generate ssh keys
 if [ ! -f ~/.ssh/id_rsa ]; then
 	status generating ssh keys
@@ -25,7 +21,7 @@ read -n 1 -rsp $'press any key to continue...\n'
 
 # install dependencies
 status installing requisite packages
-sudo apt-get install ansible git -y
+sudo apt-get install ansible git whiptail -y
 
 # clone dotfiles repo
 if [ ! -d "~/.dotfiles.git" ]; then
@@ -36,7 +32,6 @@ fi
 
 # assign roles via ansible playbooks
 status assigning roles
-role personal-repo
-role shell
+~/.local/bin/rolr add personal-repo shell
 
 exec zsh
