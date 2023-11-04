@@ -28,7 +28,7 @@ fi
 . /etc/os-release
 distro=$ID
 arch=$(uname -m)
-script_url=$SCRIPTS_URL/$arch/$distro/setup.sh
+script_url=$SCRIPTS_URL/$arch/$distro.sh
 
 http_status=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "$script_url")
 if [ "$http_status" != "200" ]; then
