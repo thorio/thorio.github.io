@@ -15,11 +15,12 @@ function setup_promptkey() {
 }
 
 function setup_clonerepo() {
-	if [ -d "~/.dotfiles.git" ]; then return; fi
+	local dotfiles_path=$HOME/.local/share/dotfiles.git
+	if [ -d "$dotfiles_path" ]; then return; fi
 
 	setup_status cloning dotfiles repo
-	git clone --bare $DOTFILES_REPO ~/.dotfiles.git
-	git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME checkout
+	git clone --bare "$DOTFILES_REPO" "$dotfiles_path"
+	git --git-dir="$dotfiles_path" --work-tree="$HOME" checkout
 }
 
 function setup_download_github() {

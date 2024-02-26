@@ -19,6 +19,7 @@ setup_reqcommand() {
 
 setup_reqcommand sudo
 setup_reqcommand curl
+setup_reqcommand ssh-keygen
 
 if [ -f "/os-release" ]; then
     setup_status /os-release not found
