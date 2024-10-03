@@ -1,5 +1,3 @@
-#!/bin/bash
-
 setup_genkey
 setup_promptkey
 
@@ -16,5 +14,3 @@ rm $package
 
 setup_status assigning roles
 rolr add base shell
-
-exec zsh

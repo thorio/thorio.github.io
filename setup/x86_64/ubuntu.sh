@@ -1,7 +1,7 @@
-#!/bin/bash
-
 setup_genkey
 setup_promptkey
+
+exit 1
 
 setup_status installing requisite packages
 sudo apt-get install ansible git -y
@@ -16,5 +16,3 @@ rm $package
 
 setup_status assigning roles
 rolr add personal-repo shell
-
-exec zsh

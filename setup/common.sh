@@ -1,7 +1,5 @@
-#!/bin/bash
-
 function setup_genkey() {
-	if [ -f ~/.ssh/id_rsa ]; then return; fi
+	if [ -f ~/.ssh/id_rsa ]; then return 0; fi
 
 	setup_status generating ssh keys
 	ssh-keygen -b 4096 -t rsa -f ~/.ssh/id_rsa -q -N ""
@@ -16,7 +14,7 @@ function setup_promptkey() {
 
 function setup_clonerepo() {
 	local dotfiles_path=$HOME/.local/share/dotfiles.git
-	if [ -d "$dotfiles_path" ]; then return; fi
+	if [ -d "$dotfiles_path" ]; then return 0; fi
 
 	setup_status cloning dotfiles repo
 	git clone --bare "$DOTFILES_REPO" "$dotfiles_path"
