@@ -1,8 +1,6 @@
 setup_genkey
 setup_promptkey
 
-exit 1
-
 setup_status installing requisite packages
 sudo apt-get install ansible git -y
 setup_clonerepo
