@@ -47,7 +47,7 @@ This currently only contains a setup script for personal use.
 The dotfiles repo is private because it contains personal information, but you can substitute my public mirror.  
 In `setup.sh`, replace:
 ```diff
-< export DOTFILES_REPO=git@github.com:thorio/dotfiles.git
+< export DOTFILES_REPO=ssh://git@forge.chirality.de:2222/thorou/dotfiles.git
 ---
 > export DOTFILES_REPO=https://github.com/thorio/dotfiles-public.git
 ```
