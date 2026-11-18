@@ -1,1 +1,1 @@
-../x86_64/ubuntu.sh
+../x86_64/debian.sh
