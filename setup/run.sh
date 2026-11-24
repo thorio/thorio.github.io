@@ -18,12 +18,11 @@ setup_reqcommand curl
 setup_reqcommand ssh-keygen
 
 if [ -f "/os-release" ]; then
-    setup_status /os-release not found
+	setup_status /os-release not found
 	exit 1
 fi
 
-. /etc/os-release
-distro=$ID
+distro=$(. /etc/os-release && echo "$ID")
 arch=$(uname -m)
 script_url=$SCRIPTS_URL/$arch/$distro.sh
 
