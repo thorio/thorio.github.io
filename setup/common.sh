@@ -1,13 +1,13 @@
 function setup_genkey() {
-	if [ -f ~/.ssh/id_rsa ]; then return 0; fi
+	if [ -f ~/.ssh/id_ed25519 ]; then return 0; fi
 
 	setup_status generating ssh keys
-	ssh-keygen -b 4096 -t rsa -f ~/.ssh/id_rsa -q -N ""
+	ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -q -N ""
 }
 
 function setup_promptkey() {
 	setup_status printing public key
-	cat ~/.ssh/id_rsa.pub
+	cat ~/.ssh/id_ed25519.pub
 	printf "\nadd deploy key now\n"
 	read -n 1 -rsp $'press any key to continue...\n'
 }
